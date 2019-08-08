@@ -1,19 +1,18 @@
 <!doctype html>
-<html lang="en">
-{% include 'partial/head.twig' %}
+<html>
+    {% include 'partial/head.twig' %}
     <body>
-    {% include 'partial/navigation.twig' %}
-        <main class="container" style="padding-top:30px">
+        <main class="container-fluid">
             <div class="row">
-                {% for product in products %}
-                <div class="col-md-3" data-id="{{product.product_id}}">
-                <img class="img-fluid" src="images/products/{{product.image}}">
-                    <h3>{{product.name}}</h3>
-                    <h6>{{product.price}}</h6>
-                    <p>{{product.description | slice(0,50) ~ '...'}}</p>
-                    <a href="detail.php?product_id={{product.product_id}}">Info</a>
+            {% for product in products %}
+                <div class="col-md-3">
+                    <img class="img-fluid" src="images/products/{{product.image}}">
+                    <h4 class="product-name">{{product.name}}</h4>
+                    <h6 class="product-price">{{product.price}}</h6>
+                    <p class="product-description">{{product.description | slice(0,100) ~ '...'}}</p>
+                    <a href="detail.php?product_id={{product.product_id}}">Detail</a>
                 </div>
-                {% endfor %}
+            {% endfor %}
             </div>
         </main>
     </body>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+{% include 'partial/head.twig' %}
+    <body>
+    {% include 'partial/navigation.twig' %}
+        <main class="container-fluid" style="padding-top:30px">
+            <div class="row">
+                <div class="col-md-6">
+                {% if detail.images | length > 1 %}
+                <div class="caroulel" id="product-carousel" data-ride="carousel">
+                <div class="carousel-inner">
+                  {% for image in detail.images %}
+                  {% set active = loop.index == 1 ? 'active' : ' ' %}
+                  <div class="carousel-item" {{active}}>
+                  <img class="w-100" src="images/products/{{image}}"
+                  </div>
+                  {% endfor %}
+                   </div>
+                   <ol class= "carousel-indicators">
+                   {% for image in detail.images %}
+                   <li></li>
+                   {% endfor %}
+                   </ol>
+                {% else %}
+                {% for image in detail.images %}
+                <img src="images/products/{{detail.images}}" class="img-fluid">;
+                {% endfor %}
+                {% endif %}
+                </div>
+                <div class="col-md-6"></div>
+                <h3>{{detail.product.name}}</h3>
+                <h5>{{detail.product.price}}</h5>
+                <p>{{detail.product.description}}</p>
+                </div>
+               
+            </div>
+        </main>
+    </body>
+</html>
